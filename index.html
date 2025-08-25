@@ -6,24 +6,28 @@
 <title>Daily Lottery</title>
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fff0f6;
-    color: #333;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #fff0f6, #ffe6f0);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
+    color: #333;
 }
 header {
-    background-color: #ff007f;
-    color: white;
-    padding: 10px 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #ff007f;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+}
+header .logo-text {
+    font-size: 28px;
     font-weight: bold;
 }
 .marquee {
@@ -45,78 +49,75 @@ header {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }
 }
-.logo-container {
+.main-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     text-align: center;
-    margin: 20px 0;
+    width: 400px;
 }
-.logo-container img {
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
-}
-.logo-container h1 {
-    font-size: 36px;
+.main-card h1 {
+    font-size: 60px;
     color: #FFD700;
-    margin-top: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-}
-.info {
-    margin: 10px 0;
-    font-size: 18px;
-}
 .entry-card {
-    display: inline-block;
     background: linear-gradient(135deg, #ff5fa2, #ff007f);
     color: white;
     padding: 15px 30px;
     border-radius: 12px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin: 10px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin: 15px 0;
 }
-.entry-text {
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+.stat-card {
+    background: #ffe6f0;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-width: 120px;
+}
+.stat-card .number {
+    font-size: 22px;
+    color: #ff007f;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+form input {
+    padding: 10px;
     font-size: 16px;
-    opacity: 0.8;
-}
-.entry-amount {
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 5px;
+    margin: 5px 0;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 .btn {
     background-color: #ff007f;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 18px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 10px 0;
+    transition: 0.3s;
 }
-footer {
-    background-color: #ff007f;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-}
-input[type=number] {
-    padding: 8px;
-    font-size: 16px;
-    width: 100px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.btn:hover {
+    background-color: #ff3399;
 }
 .winner {
     margin-top: 20px;
@@ -124,42 +125,54 @@ input[type=number] {
     font-weight: bold;
     color: #ff007f;
 }
+footer {
+    background-color: #ff007f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+}
 </style>
 </head>
 <body>
 <header>
+    <div class="logo-text">BD</div>
     <div>Owner: Abid Al Hasan Tamim</div>
-    <div></div>
 </header>
 
 <div class="marquee">
   <p>⏪ আসসালামু আলাইকুম! বিকাশ দিচ্ছে ভাগ্য পরীক্ষা করার সুযোগ! মাত্র ৫০ টাকা সেন্ড মানি করে আপনিও জিতে নিতে পারেন ৫০ হাজার টাকা! Bkash Lucky Fund</p>
 </div>
 
-<div class="logo-container">
-    <img src="logo.png" alt="Lottery Logo">
-    <h1>Luck</h1>
-</div>
-
-<main>
-    <div class="info">Bkash Agent Number: 01862748747</div>
-
+<div class="main-card">
+    <h1>BD</h1>
     <div class="entry-card">
         <div class="entry-text">Entry Fee</div>
         <div class="entry-amount">৳ 50</div>
     </div>
 
-    <div class="info">Total Participants: <span id="totalParticipants">0</span></div>
-    <div class="info">Total Collected: <span id="totalCollected">0</span> BDT</div>
-    
-    <div>
-        <input type="number" id="amount" placeholder="50" value="50" readonly>
-        <button class="btn" onclick="sendMoney()">Send Money</button>
+    <div class="stats">
+        <div class="stat-card">
+            Total Participants<br>
+            <span class="number" id="totalParticipants">0</span>
+        </div>
+        <div class="stat-card">
+            Total Collected<br>
+            <span class="number" id="totalCollected">0</span> BDT
+        </div>
     </div>
+
+    <form id="lotteryForm">
+        <input type="text" id="name" placeholder="নাম" required>
+        <input type="text" id="address" placeholder="ঠিকানা" required>
+        <input type="tel" id="phone" placeholder="মোবাইল নাম্বার 01XXXXXXXXX" required pattern="[0-9]{11}">
+        <button type="submit" class="btn">Send Money & Join Lottery</button>
+    </form>
 
     <button class="btn" onclick="drawWinner()">Draw Winner (10 PM)</button>
     <div class="winner" id="winner"></div>
-</main>
+</div>
 
 <footer>
     Made by Bkash | For any issue, message: <a href="mailto:cyberexpertbhh@gmail.com" style="color:white;">cyberexpertbhh@gmail.com</a>
@@ -170,38 +183,39 @@ let totalParticipants = 0;
 let totalCollected = 0;
 let participants = [];
 
-function sendMoney() {
-    try {
-        const amount = 50;
+document.getElementById("lotteryForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if(name && address && phone.length === 11){
         totalParticipants++;
-        totalCollected += amount;
-        participants.push("User" + totalParticipants);
+        totalCollected += 50;
+        participants.push({name, address, phone});
         document.getElementById("totalParticipants").innerText = totalParticipants;
         document.getElementById("totalCollected").innerText = totalCollected;
-        alert("Payment successful! You are entered into the lottery.");
-    } catch (e) {
-        alert("Something went wrong! Please contact cyberexpertbhh@gmail.com");
+        alert("Payment simulated! You are entered into the lottery.");
+        document.getElementById("lotteryForm").reset();
+    } else {
+        alert("Please fill all fields correctly!");
     }
-}
+});
 
 function drawWinner() {
-    try {
-        if (participants.length === 0) {
-            alert("No participants yet! Contact cyberexpertbhh@gmail.com for help.");
-            return;
-        }
-        const winnerIndex = Math.floor(Math.random() * participants.length);
-        const winnerName = participants[winnerIndex];
-        document.getElementById("winner").innerText = "🎉 Winner: " + winnerName + " gets " + totalCollected + " BDT 🎉";
-        participants = [];
-        totalParticipants = 0;
-        totalCollected = 0;
-        document.getElementById("totalParticipants").innerText = totalParticipants;
-        document.getElementById("totalCollected").innerText = totalCollected;
-    } catch (e) {
-        alert("Error drawing winner! Contact cyberexpertbhh@gmail.com");
+    if (participants.length === 0) {
+        alert("No participants yet! Contact cyberexpertbhh@gmail.com for help.");
+        return;
     }
+    const winnerIndex = Math.floor(Math.random() * participants.length);
+    const winnerName = participants[winnerIndex].name;
+    document.getElementById("winner").innerText = "🎉 Winner: " + winnerName + " gets " + totalCollected + " BDT 🎉";
+    participants = [];
+    totalParticipants = 0;
+    totalCollected = 0;
+    document.getElementById("totalParticipants").innerText = totalParticipants;
+    document.getElementById("totalCollected").innerText = totalCollected;
 }
 </script>
 </body>
-            </html>
+                </html>
