@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,11 +26,6 @@ header {
     align-items: center;
     font-weight: bold;
 }
-header img {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-}
 .marquee {
     width: 100%;
     overflow: hidden;
@@ -54,10 +49,16 @@ header img {
     text-align: center;
     margin: 20px 0;
 }
+.logo-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
 .logo-container h1 {
-    font-size: 32px;
-    color: #ff007f;
+    font-size: 36px;
+    color: #FFD700;
     margin-top: 10px;
+    font-weight: bold;
 }
 main {
     flex: 1;
@@ -71,6 +72,26 @@ main {
 .info {
     margin: 10px 0;
     font-size: 18px;
+}
+.entry-card {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff5fa2, #ff007f);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 10px 0;
+}
+.entry-text {
+    font-size: 16px;
+    opacity: 0.8;
+}
+.entry-amount {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 5px;
 }
 .btn {
     background-color: #ff007f;
@@ -116,13 +137,18 @@ input[type=number] {
 </div>
 
 <div class="logo-container">
-    <img src="https://via.placeholder.com/300x300.png?text=Check+Your+Luck" alt="Lottery Logo">
-    <h1>Check Your Luck</h1>
+    <img src="logo.png" alt="Lottery Logo">
+    <h1>Luck</h1>
 </div>
 
 <main>
     <div class="info">Bkash Agent Number: 01862748747</div>
-    <div class="info">Entry Fee: 50 BDT</div>
+
+    <div class="entry-card">
+        <div class="entry-text">Entry Fee</div>
+        <div class="entry-amount">৳ 50</div>
+    </div>
+
     <div class="info">Total Participants: <span id="totalParticipants">0</span></div>
     <div class="info">Total Collected: <span id="totalCollected">0</span> BDT</div>
     
@@ -134,6 +160,7 @@ input[type=number] {
     <button class="btn" onclick="drawWinner()">Draw Winner (10 PM)</button>
     <div class="winner" id="winner"></div>
 </main>
+
 <footer>
     Made by Bkash | For any issue, message: <a href="mailto:cyberexpertbhh@gmail.com" style="color:white;">cyberexpertbhh@gmail.com</a>
 </footer>
@@ -177,4 +204,4 @@ function drawWinner() {
 }
 </script>
 </body>
-</html>
+            </html>
