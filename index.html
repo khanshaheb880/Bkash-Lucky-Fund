@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Lottery</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff0f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+header {
+    background-color: #ff007f;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffe6f0;
+    border-bottom: 2px solid #ff007f;
+}
+.marquee p {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    font-size: 18px;
+    color: #ff007f;
+    font-weight: bold;
+    animation: marquee 20s linear infinite;
+}
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+.logo-container {
+    text-align: center;
+    margin: 20px 0;
+}
+.logo-container h1 {
+    font-size: 32px;
+    color: #ff007f;
+    margin-top: 10px;
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+.info {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.btn {
+    background-color: #ff007f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+footer {
+    background-color: #ff007f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+input[type=number] {
+    padding: 8px;
+    font-size: 16px;
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.winner {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff007f;
+}
+</style>
+</head>
+<body>
+<header>
+    <div>Owner: Abid Al Hasan Tamim</div>
+    <div></div>
+</header>
+
+<div class="marquee">
+  <p>⏪ আসসালামু আলাইকুম! বিকাশ দিচ্ছে ভাগ্য পরীক্ষা করার সুযোগ! মাত্র ৫০ টাকা সেন্ড মানি করে আপনিও জিতে নিতে পারেন ৫০ হাজার টাকা! Bkash Lucky Fund</p>
+</div>
+
+<div class="logo-container">
+    <img src="https://via.placeholder.com/300x300.png?text=Check+Your+Luck" alt="Lottery Logo">
+    <h1>Check Your Luck</h1>
+</div>
+
+<main>
+    <div class="info">Bkash Agent Number: 01862748747</div>
+    <div class="info">Entry Fee: 50 BDT</div>
+    <div class="info">Total Participants: <span id="totalParticipants">0</span></div>
+    <div class="info">Total Collected: <span id="totalCollected">0</span> BDT</div>
+    
+    <div>
+        <input type="number" id="amount" placeholder="50" value="50" readonly>
+        <button class="btn" onclick="sendMoney()">Send Money</button>
+    </div>
+
+    <button class="btn" onclick="drawWinner()">Draw Winner (10 PM)</button>
+    <div class="winner" id="winner"></div>
+</main>
+<footer>
+    Made by Bkash | For any issue, message: <a href="mailto:cyberexpertbhh@gmail.com" style="color:white;">cyberexpertbhh@gmail.com</a>
+</footer>
+
+<script>
+let totalParticipants = 0;
+let totalCollected = 0;
+let participants = [];
+
+function sendMoney() {
+    try {
+        const amount = 50;
+        totalParticipants++;
+        totalCollected += amount;
+        participants.push("User" + totalParticipants);
+        document.getElementById("totalParticipants").innerText = totalParticipants;
+        document.getElementById("totalCollected").innerText = totalCollected;
+        alert("Payment successful! You are entered into the lottery.");
+    } catch (e) {
+        alert("Something went wrong! Please contact cyberexpertbhh@gmail.com");
+    }
+}
+
+function drawWinner() {
+    try {
+        if (participants.length === 0) {
+            alert("No participants yet! Contact cyberexpertbhh@gmail.com for help.");
+            return;
+        }
+        const winnerIndex = Math.floor(Math.random() * participants.length);
+        const winnerName = participants[winnerIndex];
+        document.getElementById("winner").innerText = "🎉 Winner: " + winnerName + " gets " + totalCollected + " BDT 🎉";
+        participants = [];
+        totalParticipants = 0;
+        totalCollected = 0;
+        document.getElementById("totalParticipants").innerText = totalParticipants;
+        document.getElementById("totalCollected").innerText = totalCollected;
+    } catch (e) {
+        alert("Error drawing winner! Contact cyberexpertbhh@gmail.com");
+    }
+}
+</script>
+</body>
+</html>
